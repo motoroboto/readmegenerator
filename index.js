@@ -5,17 +5,26 @@ const inquirer = require("inquirer");
 inquirer
     .prompt([
         {
-            message: "What is you name?",
-            name: "name",
+            name: 'name',
+            type: 'input',
+            message: 'What is your name?',
         },
         {
-            message: "What else?",
-            name: "what",
+            name: 'something',
+            type: 'input',
+            message: 'What is something else?',
         },
-    ]).then(name => {
+        {
+            name: 'title',
+            type: 'input',
+            message: 'What is the name of this project?',
+        },
+    ])
+    .then((answer) => {
         fs.writeFile('README.md',
 
-            `${name}`,
+            `# ${answer.title}
+            This was made for ${answer.name} and it's really ${answer.something}`,
 
             function (err) {
                 if (err) throw err;
