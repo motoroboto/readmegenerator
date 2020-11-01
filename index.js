@@ -3,13 +3,20 @@ const inquirer = require("inquirer");
 
 
 inquirer
-    .prompt({
-        message: "What is you name?",
-        name: "name"
-    }).then(name => {
-        fs.writeFile('read.md',
+    .prompt([
+        {
+            message: "What is you name?",
+            name: "name",
+        },
+        {
+            message: "What else?",
+            name: "what",
+        },
+    ]).then(name => {
+        fs.writeFile('README.md',
 
-            "${name}",
+            `${name}`,
+
             function (err) {
                 if (err) throw err;
                 console.log('Saved!');
