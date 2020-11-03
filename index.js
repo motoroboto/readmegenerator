@@ -32,12 +32,17 @@ inquirer
         {
             name: 'report',
             type: 'input',
-            message: 'What should a user do to report an issue?',
+            message: 'What is your email so that you can be contacted to report an issue?',
         },
         {
             name: 'contribute',
             type: 'input',
             message: 'How would someone contribute to this project?',
+        },
+        {
+            name: 'github',
+            type: 'input',
+            message: 'What is your gihub username?',
         },
         {
             name: 'license',
@@ -63,12 +68,29 @@ inquirer
             `
 # ${answer.title}
 ${licenseBadge}
-This was made for ${answer.name} and it's really cool
+
+### Introduction
+
+This was made for ${answer.name} and it's really cool. My github name is ${answer.github}
+
+[Project Description](#project-description)
+[Installation](#installation)
+[Issues](#issues)
+[License](#license)
+
+
+### Project Description
 ${answer.useCase}
 ${answer.howTo}
+
+### Installation
 ${answer.install} and then some
+
+### Issues
 ${answer.report}
 ${answer.contribute}
+
+### Licence
 About the ${answer.license} License: 
 ${licenseDescription}
 `,
