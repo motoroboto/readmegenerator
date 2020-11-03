@@ -10,11 +10,6 @@ inquirer
             message: 'What is your name?',
         },
         {
-            name: 'something',
-            type: 'input',
-            message: 'What is something else?',
-        },
-        {
             name: 'title',
             type: 'input',
             message: 'What is the name of this project?',
@@ -45,32 +40,37 @@ inquirer
             message: 'How would someone contribute to this project?',
         },
         {
-            name: 'licence',
+            name: 'license',
             type: 'list',
             message: 'How kind of license does this project have?',
-            choices: ["Apache", "MPS", "Another made Up one"],
+            choices: ["Apache 2.0", "GNU v3.0", "MIT"],
         },
     ])
     .then((answer) => {
-        var licenseType = answer.licence;
-        if (licenseType = 'Apache') {
-            var licenseCode = '[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)'
-        } else {
-
+        console.log('license', answer.license)
+        if (answer.license == 'Apache 2.0') {
+            var licenseBadge = '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)';
+            var licenseDescription = 'Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0';
+        } else if (answer.license == 'GNU v3.0') {
+            var licenseBadge = '[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)';
+            var licenseDescription = 'The GNU General Public License is a free, copyleft license for software and other kinds of works. The licenses for most software and other practical works are designed to take away your freedom to share and change the works.By contrast, the GNU General Public License is intended to guarantee your freedom to share and change all versions of a program--to make sure it remains free software for all its users.We, the Free Software Foundation, use the GNU General Public License for most of our software; it applies also to any other work released this way by its authors.You can apply it to your programs, too.';
+        } else if (answer.license == 'MIT') {
+            var licenseBadge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
+            var licenseDescription = 'Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.';
         };
-        console.log('licenseType:', licenseType);
         fs.writeFile('README.md',
 
             `
 # ${answer.title}
-${licenseCode}
-This was made for ${answer.name} and it's really ${answer.something}
+${licenseBadge}
+This was made for ${answer.name} and it's really cool
 ${answer.useCase}
 ${answer.howTo}
 ${answer.install} and then some
 ${answer.report}
 ${answer.contribute}
-
+About the ${answer.license} License: 
+${licenseDescription}
 `,
 
             function (err) {
