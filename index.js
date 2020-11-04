@@ -63,7 +63,7 @@ inquirer
             var licenseBadge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
             var licenseDescription = 'Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.';
         };
-        fs.writeFile('README.md',
+        fs.writeFile('output/README.md',
 
             `
 # ${answer.title}
@@ -71,7 +71,7 @@ ${licenseBadge}
 
 ### Introduction
 
-This was made for ${answer.name} and it's really cool. My github can be found at https://github.com/${answer.github}.
+This project was created by ${answer.name}. Their github can be found at https://github.com/${answer.github}.
 
 [Project Description](#project-description)  
 [Installation](#installation)  
@@ -84,7 +84,8 @@ ${answer.useCase}
 ${answer.howTo}  
 
 ### Installation  
-${answer.install} and then some  
+To install this type: 
+${answer.install}
 
 ### Issues and Questions
 If you find any issues with our code, please don't hesitate to contact us at ${answer.report}, and if you would like to contribute to this project, we could use someone who is able to ${answer.contribute}. If you are interested in pitching in get in touch with us. 
